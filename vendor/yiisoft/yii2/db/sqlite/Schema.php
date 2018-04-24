@@ -11,7 +11,6 @@ use yii\base\NotSupportedException;
 use yii\db\CheckConstraint;
 use yii\db\ColumnSchema;
 use yii\db\Constraint;
-use yii\db\ConstraintFinderInterface;
 use yii\db\ConstraintFinderTrait;
 use yii\db\Expression;
 use yii\db\ForeignKeyConstraint;
@@ -30,7 +29,7 @@ use yii\helpers\ArrayHelper;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class Schema extends \yii\db\Schema implements ConstraintFinderInterface
+class Schema extends \yii\db\Schema
 {
     use ConstraintFinderTrait;
 
@@ -38,7 +37,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
      * @var array mapping from physical column types (keys) to abstract column types (values)
      */
     public $typeMap = [
-        'tinyint' => self::TYPE_TINYINT,
+        'tinyint' => self::TYPE_SMALLINT,
         'bit' => self::TYPE_SMALLINT,
         'boolean' => self::TYPE_BOOLEAN,
         'bool' => self::TYPE_BOOLEAN,
@@ -68,18 +67,9 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
         'enum' => self::TYPE_STRING,
     ];
 
-    /**
-     * {@inheritdoc}
-     */
-    protected $tableQuoteCharacter = '`';
-    /**
-     * {@inheritdoc}
-     */
-    protected $columnQuoteCharacter = '`';
-
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function findTableNames($schema = '')
     {
@@ -88,7 +78,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function loadTableSchema($name)
     {
@@ -105,7 +95,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function loadTablePrimaryKey($tableName)
     {
@@ -113,7 +103,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function loadTableForeignKeys($tableName)
     {
@@ -136,7 +126,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function loadTableIndexes($tableName)
     {
@@ -144,7 +134,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function loadTableUniques($tableName)
     {
@@ -152,7 +142,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function loadTableChecks($tableName)
     {
@@ -191,12 +181,34 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      * @throws NotSupportedException if this method is called.
      */
     protected function loadTableDefaultValues($tableName)
     {
         throw new NotSupportedException('SQLite does not support default value constraints.');
+    }
+
+    /**
+     * Quotes a table name for use in a query.
+     * A simple table name has no schema prefix.
+     * @param string $name table name
+     * @return string the properly quoted table name
+     */
+    public function quoteSimpleTableName($name)
+    {
+        return strpos($name, '`') !== false ? $name : "`$name`";
+    }
+
+    /**
+     * Quotes a column name for use in a query.
+     * A simple column name has no prefix.
+     * @param string $name column name
+     * @return string the properly quoted column name
+     */
+    public function quoteSimpleColumnName($name)
+    {
+        return strpos($name, '`') !== false || $name === '*' ? $name : "`$name`";
     }
 
     /**
@@ -210,7 +222,7 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @return ColumnSchemaBuilder column schema builder instance
      */
     public function createColumnSchemaBuilder($type, $length = null)
@@ -451,6 +463,6 @@ class Schema extends \yii\db\Schema implements ConstraintFinderInterface
      */
     private function isSystemIdentifier($identifier)
     {
-        return strncmp($identifier, 'sqlite_', 7) === 0;
+        return strpos($identifier, 'sqlite_') === 0;
     }
 }

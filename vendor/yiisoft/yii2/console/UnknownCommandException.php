@@ -74,7 +74,8 @@ class UnknownCommandException extends Exception
         list($helpController, $actionID) = $help;
 
         $availableActions = [];
-        foreach ($helpController->getCommands() as $command) {
+        $commands = $helpController->getCommands();
+        foreach ($commands as $command) {
             $result = $this->application->createController($command);
             if ($result === false) {
                 continue;

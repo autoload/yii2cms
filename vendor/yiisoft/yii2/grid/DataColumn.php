@@ -98,9 +98,7 @@ class DataColumn extends Column
      * @var string|array|null|false the HTML code representing a filter input (e.g. a text field, a dropdown list)
      * that is used for this data column. This property is effective only when [[GridView::filterModel]] is set.
      *
-     * - If this property is not set, a text field will be generated as the filter input with attributes defined
-     *   with [[filterInputOptions]]. See [[\yii\helpers\BaseHtml::activeInput]] for details on how an active
-     *   input tag is generated.
+     * - If this property is not set, a text field will be generated as the filter input;
      * - If this property is an array, a dropdown list will be generated that uses this property value as
      *   the list options.
      * - If you don't want a filter for this data column, set this value to be false.
@@ -110,17 +108,13 @@ class DataColumn extends Column
      * @var array the HTML attributes for the filter input fields. This property is used in combination with
      * the [[filter]] property. When [[filter]] is not set or is an array, this property will be used to
      * render the HTML attributes for the generated filter input fields.
-     *
-     * Empty `id` in the default value ensures that id would not be obtained from the model attribute thus
-     * providing better performance.
-     *
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $filterInputOptions = ['class' => 'form-control', 'id' => null];
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function renderHeaderCellContent()
     {
@@ -142,7 +136,7 @@ class DataColumn extends Column
     }
 
     /**
-     * {@inheritdoc]
+     * @inheritdoc
      * @since 2.0.8
      */
     protected function getHeaderCellLabel()
@@ -179,7 +173,7 @@ class DataColumn extends Column
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function renderFilterCellContent()
     {
@@ -202,8 +196,8 @@ class DataColumn extends Column
             } elseif ($this->format === 'boolean') {
                 $options = array_merge(['prompt' => ''], $this->filterInputOptions);
                 return Html::activeDropDownList($model, $this->attribute, [
-                    1 => $this->grid->formatter->booleanFormat[1],
-                    0 => $this->grid->formatter->booleanFormat[0],
+                    $this->grid->formatter->booleanFormat[0],
+                    $this->grid->formatter->booleanFormat[1],
                 ], $options) . $error;
             }
 
@@ -236,7 +230,7 @@ class DataColumn extends Column
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function renderDataCellContent($model, $key, $index)
     {

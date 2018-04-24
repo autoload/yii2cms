@@ -84,7 +84,7 @@ class MigrateController extends BaseMigrateController
      */
     public $migrationTable = '{{%migration}}';
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public $templateFile = '@yii/views/migration.php';
     /**
@@ -132,15 +132,10 @@ class MigrateController extends BaseMigrateController
      * for creating the object.
      */
     public $db = 'db';
-    /**
-     * @var string the comment for the table being created.
-     * @since 2.0.14
-     */
-    public $comment = '';
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function options($actionID)
     {
@@ -148,19 +143,18 @@ class MigrateController extends BaseMigrateController
             parent::options($actionID),
             ['migrationTable', 'db'], // global for all actions
             $actionID === 'create'
-                ? ['templateFile', 'fields', 'useTablePrefix', 'comment']
+                ? ['templateFile', 'fields', 'useTablePrefix']
                 : []
         );
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since 2.0.8
      */
     public function optionAliases()
     {
         return array_merge(parent::optionAliases(), [
-            'C' => 'comment',
             'f' => 'fields',
             'p' => 'migrationPath',
             't' => 'migrationTable',
@@ -203,7 +197,7 @@ class MigrateController extends BaseMigrateController
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function getMigrationHistory($limit)
     {
@@ -278,7 +272,7 @@ class MigrateController extends BaseMigrateController
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function addMigrationHistory($version)
     {
@@ -290,7 +284,7 @@ class MigrateController extends BaseMigrateController
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since 2.0.13
      */
     protected function truncateDatabase()
@@ -316,7 +310,7 @@ class MigrateController extends BaseMigrateController
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function removeMigrationHistory($version)
     {
@@ -329,7 +323,7 @@ class MigrateController extends BaseMigrateController
     private $_migrationNameLimit;
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since 2.0.13
      */
     protected function getMigrationNameLimit()
@@ -346,7 +340,7 @@ class MigrateController extends BaseMigrateController
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since 2.0.8
      */
     protected function generateMigrationSourceCode($params)
@@ -443,7 +437,6 @@ class MigrateController extends BaseMigrateController
             'table' => $this->generateTableName($table),
             'fields' => $fields,
             'foreignKeys' => $foreignKeys,
-            'tableComment' => $this->comment,
         ]));
     }
 
@@ -483,7 +476,7 @@ class MigrateController extends BaseMigrateController
             $property = array_shift($chunks);
 
             foreach ($chunks as $i => &$chunk) {
-                if (strncmp($chunk, 'foreignKey', 10) === 0) {
+                if (strpos($chunk, 'foreignKey') === 0) {
                     preg_match('/foreignKey\((\w*)\s?(\w*)\)/', $chunk, $matches);
                     $foreignKeys[$property] = [
                         'table' => isset($matches[1])

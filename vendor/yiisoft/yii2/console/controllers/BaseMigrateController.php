@@ -93,7 +93,7 @@ abstract class BaseMigrateController extends Controller
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function options($actionID)
     {
@@ -643,7 +643,7 @@ abstract class BaseMigrateController extends Controller
                 'namespace' => $namespace,
             ]);
             FileHelper::createDirectory($migrationPath);
-            file_put_contents($file, $content, LOCK_EX);
+            file_put_contents($file, $content);
             $this->stdout("New migration created successfully.\n", Console::FG_GREEN);
         }
     }

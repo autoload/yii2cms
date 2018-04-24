@@ -7,13 +7,18 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'yii\\swiftmailer\\' => array($vendorDir . '/yiisoft/yii2-swiftmailer'),
+    'yii\\redactor\\' => array($vendorDir . '/yiidoc/yii2-redactor'),
     'yii\\gii\\' => array($vendorDir . '/yiisoft/yii2-gii'),
     'yii\\faker\\' => array($vendorDir . '/yiisoft/yii2-faker'),
     'yii\\debug\\' => array($vendorDir . '/yiisoft/yii2-debug'),
     'yii\\composer\\' => array($vendorDir . '/yiisoft/yii2-composer'),
-    'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap/src'),
+    'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
+    'rmrevin\\yii\\fontawesome\\' => array($vendorDir . '/rmrevin/yii2-fontawesome'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
+    'mdm\\admin\\' => array($vendorDir . '/mdmsoft/yii2-admin'),
+    'manks\\' => array($vendorDir . '/bailangzhan/yii2-webuploader'),
+    'dmstr\\' => array($vendorDir . '/dmstr/yii2-adminlte-asset'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
@@ -30,7 +35,6 @@ return array(
     'Egulias\\EmailValidator\\' => array($vendorDir . '/egulias/email-validator/EmailValidator'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
-    'Codeception\\PHPUnit\\' => array($vendorDir . '/codeception/phpunit-wrapper/src'),
     'Codeception\\Extension\\' => array($vendorDir . '/codeception/base/ext'),
     'Codeception\\' => array($vendorDir . '/codeception/base/src/Codeception', $vendorDir . '/codeception/stub/src'),
 );

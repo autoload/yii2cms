@@ -27,9 +27,9 @@ use yii\db\Migration;
 class <?= $className ?> extends Migration
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function safeUp()
+    public function up()
     {
         $this->createTable('<?= $table ?>', [
             '<?= $field_first ?>_id' => $this->integer(),
@@ -69,9 +69,9 @@ class <?= $className ?> extends Migration
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function safeDown()
+    public function down()
     {
         $this->dropTable('<?= $table ?>');
     }

@@ -189,8 +189,7 @@ class HttpCache extends ActionFilter
                 header_remove('Last-Modified');
                 header_remove('Pragma');
             }
-
-            Yii::$app->getSession()->setCacheLimiter($this->sessionCacheLimiter);
+            session_cache_limiter($this->sessionCacheLimiter);
         }
 
         $headers = Yii::$app->getResponse()->getHeaders();

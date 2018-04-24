@@ -7,7 +7,6 @@
 /* @var $className string the new migration class name without namespace */
 /* @var $namespace string the new migration class namespace */
 /* @var $table string the name table */
-/* @var $tableComment string the comment table */
 /* @var $fields array the fields */
 /* @var $foreignKeys array the foreign keys */
 
@@ -28,9 +27,9 @@ use yii\db\Migration;
 class <?= $className ?> extends Migration
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function safeUp()
+    public function up()
     {
 <?= $this->render('_createTable', [
     'table' => $table,
@@ -38,19 +37,12 @@ class <?= $className ?> extends Migration
     'foreignKeys' => $foreignKeys,
 ])
 ?>
-<?php if (!empty($tableComment)) {
-    echo $this->render('_addComments', [
-        'table' => $table,
-        'tableComment' => $tableComment,
-    ]);
-}
-?>
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function safeDown()
+    public function down()
     {
 <?= $this->render('_dropTable', [
     'table' => $table,

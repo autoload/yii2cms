@@ -75,7 +75,7 @@ class Cest implements LoaderInterface
                 }
 
                 if (count($examples)) {
-                    $dataProvider = new \PHPUnit\Framework\DataProviderTestSuite();
+                    $dataProvider = new \PHPUnit_Framework_TestSuite_DataProvider();
                     foreach ($examples as $k => $example) {
                         if ($example === null) {
                             throw new TestParseException(

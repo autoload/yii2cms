@@ -277,9 +277,10 @@ Generates StepObject class. You will be asked for steps you want to implement.
 
 ## Clean
 
-Recursively cleans `output` directory and generated code.
+Cleans `output` directory
 
 * `codecept clean`
+* `codecept clean -c path/to/project`
 
 
 

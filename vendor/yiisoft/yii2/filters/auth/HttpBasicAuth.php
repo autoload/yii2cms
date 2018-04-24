@@ -67,7 +67,6 @@ class HttpBasicAuth extends AuthMethod
      * @var callable a PHP callable that will authenticate the user with the HTTP basic auth information.
      * The callable receives a username and a password as its parameters. It should return an identity object
      * that matches the username and password. Null should be returned if there is no such identity.
-     * The callable will be called only if current user is not authenticated.
      *
      * The following code is a typical implementation of this callable:
      *
@@ -88,7 +87,7 @@ class HttpBasicAuth extends AuthMethod
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function authenticate($user, $request, $response)
     {
@@ -96,12 +95,11 @@ class HttpBasicAuth extends AuthMethod
 
         if ($this->auth) {
             if ($username !== null || $password !== null) {
-                $identity = $user->getIdentity() ?: call_user_func($this->auth, $username, $password);
-
-                if ($identity === null) {
-                    $this->handleFailure($response);
-                } elseif ($user->getIdentity(false) !== $identity) {
+                $identity = call_user_func($this->auth, $username, $password);
+                if ($identity !== null) {
                     $user->switchIdentity($identity);
+                } else {
+                    $this->handleFailure($response);
                 }
 
                 return $identity;
@@ -119,7 +117,7 @@ class HttpBasicAuth extends AuthMethod
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function challenge($response)
     {

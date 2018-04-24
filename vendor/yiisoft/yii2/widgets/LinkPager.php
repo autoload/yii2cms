@@ -139,8 +139,6 @@ class LinkPager extends Widget
      */
     public function init()
     {
-        parent::init();
-
         if ($this->pagination === null) {
             throw new InvalidConfigException('The "pagination" property must be set.');
         }
@@ -245,10 +243,9 @@ class LinkPager extends Widget
         }
         if ($disabled) {
             Html::addCssClass($options, $this->disabledPageCssClass);
-            $disabledItemOptions = $this->disabledListItemSubTagOptions;
-            $tag = ArrayHelper::remove($disabledItemOptions, 'tag', 'span');
+            $tag = ArrayHelper::remove($this->disabledListItemSubTagOptions, 'tag', 'span');
 
-            return Html::tag($linkWrapTag, Html::tag($tag, $label, $disabledItemOptions), $options);
+            return Html::tag($linkWrapTag, Html::tag($tag, $label, $this->disabledListItemSubTagOptions), $options);
         }
         $linkOptions = $this->linkOptions;
         $linkOptions['data-page'] = $page;

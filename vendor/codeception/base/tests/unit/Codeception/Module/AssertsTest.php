@@ -1,5 +1,5 @@
 <?php
-class AssertsTest extends \PHPUnit\Framework\TestCase
+class AssertsTest extends PHPUnit_Framework_TestCase
 {
     public function testAsserts()
     {
@@ -44,7 +44,7 @@ class AssertsTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @expectedException PHPUnit\Framework\AssertionFailedError
+     * @expectedException PHPUnit_Framework_AssertionFailedError
      */
     public function testExceptionFails()
     {

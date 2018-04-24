@@ -15,10 +15,10 @@ return array (
   'yiisoft/yii2-bootstrap' => 
   array (
     'name' => 'yiisoft/yii2-bootstrap',
-    'version' => '2.0.8.0',
+    'version' => '2.0.7.0',
     'alias' => 
     array (
-      '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap/src',
+      '@yii/bootstrap' => $vendorDir . '/yiisoft/yii2-bootstrap',
     ),
   ),
   'yiisoft/yii2-debug' => 
@@ -42,10 +42,64 @@ return array (
   'yiisoft/yii2-faker' => 
   array (
     'name' => 'yiisoft/yii2-faker',
-    'version' => '2.0.4.0',
+    'version' => '2.0.3.0',
     'alias' => 
     array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
+    ),
+  ),
+  'rmrevin/yii2-fontawesome' => 
+  array (
+    'name' => 'rmrevin/yii2-fontawesome',
+    'version' => '2.17.1.0',
+    'alias' => 
+    array (
+      '@rmrevin/yii/fontawesome' => $vendorDir . '/rmrevin/yii2-fontawesome',
+    ),
+  ),
+  'cebe/yii2-gravatar' => 
+  array (
+    'name' => 'cebe/yii2-gravatar',
+    'version' => '1.1.0.0',
+    'alias' => 
+    array (
+      '@cebe/gravatar' => $vendorDir . '/cebe/yii2-gravatar/cebe/gravatar',
+    ),
+  ),
+  'dmstr/yii2-adminlte-asset' => 
+  array (
+    'name' => 'dmstr/yii2-adminlte-asset',
+    'version' => '2.6.0.0',
+    'alias' => 
+    array (
+      '@dmstr' => $vendorDir . '/dmstr/yii2-adminlte-asset',
+    ),
+  ),
+  'mdmsoft/yii2-admin' => 
+  array (
+    'name' => 'mdmsoft/yii2-admin',
+    'version' => '2.8.0.0',
+    'alias' => 
+    array (
+      '@mdm/admin' => $vendorDir . '/mdmsoft/yii2-admin',
+    ),
+  ),
+  'yiidoc/yii2-redactor' => 
+  array (
+    'name' => 'yiidoc/yii2-redactor',
+    'version' => '2.0.1.0',
+    'alias' => 
+    array (
+      '@yii/redactor' => '/',
+    ),
+  ),
+  'bailangzhan/yii2-webuploader' => 
+  array (
+    'name' => 'bailangzhan/yii2-webuploader',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@manks' => $vendorDir . '/bailangzhan/yii2-webuploader',
     ),
   ),
 );

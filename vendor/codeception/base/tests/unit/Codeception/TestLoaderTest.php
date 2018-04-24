@@ -4,7 +4,7 @@
  * Class TestLoaderTest
  * @group load
  */
-class TestLoaderTest extends \PHPUnit\Framework\TestCase
+class TestLoaderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \Codeception\Test\Loader

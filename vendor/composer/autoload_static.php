@@ -4,11 +4,11 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
+class ComposerStaticInit90e5a9f8f0dee3f8ee616f7d2c92eb49
 {
     public static $files = array (
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
@@ -19,6 +19,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'y' => 
         array (
             'yii\\swiftmailer\\' => 16,
+            'yii\\redactor\\' => 13,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
             'yii\\debug\\' => 10,
@@ -26,9 +27,22 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'r' => 
+        array (
+            'rmrevin\\yii\\fontawesome\\' => 24,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'm' => 
+        array (
+            'mdm\\admin\\' => 10,
+            'manks\\' => 6,
+        ),
+        'd' => 
+        array (
+            'dmstr\\' => 6,
         ),
         'c' => 
         array (
@@ -72,7 +86,6 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         ),
         'C' => 
         array (
-            'Codeception\\PHPUnit\\' => 20,
             'Codeception\\Extension\\' => 22,
             'Codeception\\' => 12,
         ),
@@ -82,6 +95,10 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'yii\\swiftmailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
+        ),
+        'yii\\redactor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yiidoc/yii2-redactor',
         ),
         'yii\\gii\\' => 
         array (
@@ -101,17 +118,33 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         ),
         'yii\\bootstrap\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap/src',
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-bootstrap',
         ),
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'rmrevin\\yii\\fontawesome\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rmrevin/yii2-fontawesome',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'mdm\\admin\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mdmsoft/yii2-admin',
+        ),
+        'manks\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bailangzhan/yii2-webuploader',
+        ),
+        'dmstr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dmstr/yii2-adminlte-asset',
         ),
         'cebe\\markdown\\' => 
         array (
@@ -177,10 +210,6 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Codeception\\PHPUnit\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/codeception/phpunit-wrapper/src',
-        ),
         'Codeception\\Extension\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeception/base/ext',
@@ -193,6 +222,13 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
     );
 
     public static $prefixesPsr0 = array (
+        'c' => 
+        array (
+            'cebe\\gravatar\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/cebe/yii2-gravatar',
+            ),
+        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -234,6 +270,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
+        'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/BaseTestListener.php',
         'PHPUnit\\Framework\\CodeCoverageException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/CodeCoverageException.php',
         'PHPUnit\\Framework\\Constraint\\ArrayHasKey' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/ArrayHasKey.php',
         'PHPUnit\\Framework\\Constraint\\ArraySubset' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Constraint/ArraySubset.php',
@@ -377,7 +414,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHPUnit\\Util\\Configuration' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Configuration.php',
         'PHPUnit\\Util\\ConfigurationGenerator' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ConfigurationGenerator.php',
         'PHPUnit\\Util\\ErrorHandler' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/ErrorHandler.php',
-        'PHPUnit\\Util\\FileLoader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/FileLoader.php',
+        'PHPUnit\\Util\\Fileloader' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Fileloader.php',
         'PHPUnit\\Util\\Filesystem' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filesystem.php',
         'PHPUnit\\Util\\Filter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Filter.php',
         'PHPUnit\\Util\\Getopt' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Getopt.php',
@@ -392,11 +429,9 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHPUnit\\Util\\Printer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Printer.php',
         'PHPUnit\\Util\\RegularExpression' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/RegularExpression.php',
         'PHPUnit\\Util\\Test' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Test.php',
-        'PHPUnit\\Util\\TestDox\\CliTestDoxPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/CliTestDoxPrinter.php',
         'PHPUnit\\Util\\TestDox\\HtmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/HtmlResultPrinter.php',
         'PHPUnit\\Util\\TestDox\\NamePrettifier' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/NamePrettifier.php',
         'PHPUnit\\Util\\TestDox\\ResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/ResultPrinter.php',
-        'PHPUnit\\Util\\TestDox\\TestResult' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/TestResult.php',
         'PHPUnit\\Util\\TestDox\\TextResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/TextResultPrinter.php',
         'PHPUnit\\Util\\TestDox\\XmlResultPrinter' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TestDox/XmlResultPrinter.php',
         'PHPUnit\\Util\\TextTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/TextTestListRenderer.php',
@@ -404,6 +439,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHPUnit\\Util\\Xml' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/Xml.php',
         'PHPUnit\\Util\\XmlTestListRenderer' => __DIR__ . '/..' . '/phpunit/phpunit/src/Util/XmlTestListRenderer.php',
         'PHPUnit_Framework_MockObject_MockObject' => __DIR__ . '/..' . '/phpunit/phpunit-mock-objects/src/MockObject.php',
+        'PHP_Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'PHP_Token' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_TokenWithScope' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_TokenWithScopeAndVisibility' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -413,7 +449,9 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_ARRAY' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_ARRAY_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_AS' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_ASYNC' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_AT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_AWAIT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_BACKTICK' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_BAD_CHARACTER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_BOOLEAN_AND' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -437,6 +475,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_COLON' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_COMMA' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_COMMENT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_COMPILER_HALT_OFFSET' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_CONCAT_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_CONST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_CONSTANT_ENCAPSED_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -471,7 +510,9 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_ENDSWITCH' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_ENDWHILE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_END_HEREDOC' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_ENUM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_EQUALS' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_EVAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_EXCLAMATION_MARK' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_EXIT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -489,6 +530,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_HALT_COMPILER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_IF' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_IMPLEMENTS' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_IN' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_INC' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_INCLUDE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_INCLUDE_ONCE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -505,6 +547,10 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_IS_NOT_IDENTICAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_IS_SMALLER_OR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_Includes' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_JOIN' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_LAMBDA_ARROW' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_LAMBDA_CP' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_LAMBDA_OP' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_LINE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_LIST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_LNUMBER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -522,9 +568,11 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_NEW' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NS_C' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NS_SEPARATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_NULLSAFE_OBJECT_OPERATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_NUM_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OBJECT_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OBJECT_OPERATOR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_ONUMBER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OPEN_BRACKET' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OPEN_CURLY' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_OPEN_SQUARE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -547,6 +595,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_REQUIRE_ONCE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_RETURN' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SEMICOLON' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_SHAPE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SL_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SPACESHIP' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -557,6 +606,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_STRING' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_STRING_VARNAME' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_SUPER' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_SWITCH' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_Stream' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream.php',
         'PHP_Token_Stream_CachingFactory' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token/Stream/CachingFactory.php',
@@ -565,14 +615,27 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'PHP_Token_TRAIT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_TRAIT_C' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_TRY' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_TYPE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_TYPELIST_GT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_TYPELIST_LT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_UNSET' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_UNSET_CAST' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_USE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_USE_FUNCTION' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VAR' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_VARIABLE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_WHERE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_WHILE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_WHITESPACE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_ATTRIBUTE' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_CATEGORY' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_CATEGORY_LABEL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_CHILDREN' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_LABEL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_REQUIRED' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_TAG_GT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_TAG_LT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
+        'PHP_Token_XHP_TEXT' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
@@ -645,6 +708,7 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
+        'SebastianBergmann\\CodeCoverage\\Driver\\HHVM' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/HHVM.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\PHPDBG' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/PHPDBG.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Xdebug' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Xdebug.php',
         'SebastianBergmann\\CodeCoverage\\Exception' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/Exception.php',
@@ -699,7 +763,6 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'SebastianBergmann\\Comparator\\SplObjectStorageComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/SplObjectStorageComparator.php',
         'SebastianBergmann\\Comparator\\TypeComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/TypeComparator.php',
         'SebastianBergmann\\Diff\\Chunk' => __DIR__ . '/..' . '/sebastian/diff/src/Chunk.php',
-        'SebastianBergmann\\Diff\\ConfigurationException' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/ConfigurationException.php',
         'SebastianBergmann\\Diff\\Diff' => __DIR__ . '/..' . '/sebastian/diff/src/Diff.php',
         'SebastianBergmann\\Diff\\Differ' => __DIR__ . '/..' . '/sebastian/diff/src/Differ.php',
         'SebastianBergmann\\Diff\\Exception' => __DIR__ . '/..' . '/sebastian/diff/src/Exception/Exception.php',
@@ -710,7 +773,6 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'SebastianBergmann\\Diff\\Output\\AbstractChunkOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/AbstractChunkOutputBuilder.php',
         'SebastianBergmann\\Diff\\Output\\DiffOnlyOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/DiffOnlyOutputBuilder.php',
         'SebastianBergmann\\Diff\\Output\\DiffOutputBuilderInterface' => __DIR__ . '/..' . '/sebastian/diff/src/Output/DiffOutputBuilderInterface.php',
-        'SebastianBergmann\\Diff\\Output\\StrictUnifiedDiffOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/StrictUnifiedDiffOutputBuilder.php',
         'SebastianBergmann\\Diff\\Output\\UnifiedDiffOutputBuilder' => __DIR__ . '/..' . '/sebastian/diff/src/Output/UnifiedDiffOutputBuilder.php',
         'SebastianBergmann\\Diff\\Parser' => __DIR__ . '/..' . '/sebastian/diff/src/Parser.php',
         'SebastianBergmann\\Diff\\TimeEfficientLongestCommonSubsequenceCalculator' => __DIR__ . '/..' . '/sebastian/diff/src/TimeEfficientLongestCommonSubsequenceCalculator.php',
@@ -734,9 +796,6 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
         'SebastianBergmann\\RecursionContext\\Exception' => __DIR__ . '/..' . '/sebastian/recursion-context/src/Exception.php',
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
-        'SebastianBergmann\\Timer\\Exception' => __DIR__ . '/..' . '/phpunit/php-timer/src/Exception.php',
-        'SebastianBergmann\\Timer\\RuntimeException' => __DIR__ . '/..' . '/phpunit/php-timer/src/RuntimeException.php',
-        'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
@@ -752,10 +811,10 @@ class ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit64e6a88e616f49eddba6a60b8debc19e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit90e5a9f8f0dee3f8ee616f7d2c92eb49::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit90e5a9f8f0dee3f8ee616f7d2c92eb49::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit90e5a9f8f0dee3f8ee616f7d2c92eb49::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit90e5a9f8f0dee3f8ee616f7d2c92eb49::$classMap;
 
         }, null, ClassLoader::class);
     }

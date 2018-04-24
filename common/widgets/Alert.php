@@ -43,7 +43,6 @@ class Alert extends \yii\bootstrap\Widget
      */
     public $closeButton = [];
 
-
     /**
      * {@inheritdoc}
      */

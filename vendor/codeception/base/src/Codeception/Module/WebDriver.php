@@ -1621,26 +1621,9 @@ class WebDriver extends CodeceptionModule implements
     {
         $el = $this->findField($field);
         $el->clear();
-        $el->sendKeys((string) $value);
+        $el->sendKeys($value);
     }
 
-    /**
-    * Clears given field which isn't empty.
-    *
-    * ``` php
-    * <?php
-    * $I->clearField('#username');
-    * ?>
-    * ```
-    *
-    * @param $field
-    */    
-    public function clearField($field)
-    {
-        $el = $this->findField($field);
-        $el->clear();
-    }
-        
     public function attachFile($field, $filename)
     {
         $el = $this->findField($field);
@@ -1917,7 +1900,7 @@ class WebDriver extends CodeceptionModule implements
         $alert = $this->webDriver->switchTo()->alert();
         try {
             $this->assertContains($text, $alert->getText());
-        } catch (\PHPUnit\Framework\AssertionFailedError $e) {
+        } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             $alert->dismiss();
             throw $e;
         }
@@ -1939,7 +1922,7 @@ class WebDriver extends CodeceptionModule implements
         $alert = $this->webDriver->switchTo()->alert();
         try {
             $this->assertNotContains($text, $alert->getText());
-        } catch (\PHPUnit\Framework\AssertionFailedError $e) {
+        } catch (\PHPUnit_Framework_AssertionFailedError $e) {
             $alert->dismiss();
             throw $e;
         }

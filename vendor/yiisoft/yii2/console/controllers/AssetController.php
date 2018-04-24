@@ -484,7 +484,7 @@ class AssetController extends Controller
             }
         }
         $array = VarDumper::export($array);
-        $version = date('Y-m-d H:i:s');
+        $version = date('Y-m-d H:i:s', time());
         $bundleFileContent = <<<EOD
 <?php
 /**
@@ -494,7 +494,7 @@ class AssetController extends Controller
  */
 return {$array};
 EOD;
-        if (!file_put_contents($bundleFile, $bundleFileContent, LOCK_EX)) {
+        if (!file_put_contents($bundleFile, $bundleFileContent)) {
             throw new Exception("Unable to write output bundle configuration at '{$bundleFile}'.");
         }
         $this->stdout("Output bundle configuration created at '{$bundleFile}'.\n", Console::FG_GREEN);
@@ -646,7 +646,7 @@ EOD;
             $fullMatch = $matches[0];
             $inputUrl = $matches[1];
 
-            if (strncmp($inputUrl, '/', 1) === 0 || strncmp($inputUrl, '#', 1) === 0 || preg_match('/^https?:\/\//i', $inputUrl) || preg_match('/^data:/i', $inputUrl)) {
+            if (strpos($inputUrl, '/') === 0 || strpos($inputUrl, '#') === 0 || preg_match('/^https?:\/\//i', $inputUrl) || preg_match('/^data:/i', $inputUrl)) {
                 return $fullMatch;
             }
             if ($inputFileRelativePathParts === $outputFileRelativePathParts) {
@@ -738,7 +738,7 @@ EOD;
                 return ExitCode::OK;
             }
         }
-        if (!file_put_contents($configFile, $template, LOCK_EX)) {
+        if (!file_put_contents($configFile, $template)) {
             throw new Exception("Unable to write template file '{$configFile}'.");
         }
 

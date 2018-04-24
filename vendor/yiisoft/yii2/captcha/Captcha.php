@@ -107,9 +107,9 @@ class Captcha extends InputWidget
         $input = $this->renderInputHtml('text');
         $route = $this->captchaAction;
         if (is_array($route)) {
-            $route['v'] = uniqid('', true);
+            $route['v'] = uniqid();
         } else {
-            $route = [$route, 'v' => uniqid('', true)];
+            $route = [$route, 'v' => uniqid()];
         }
         $image = Html::img($route, $this->imageOptions);
         echo strtr($this->template, [

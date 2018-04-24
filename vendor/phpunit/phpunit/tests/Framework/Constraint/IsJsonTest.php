@@ -10,18 +10,14 @@
 
 namespace PHPUnit\Framework\Constraint;
 
-class IsJsonTest extends ConstraintTestCase
+use PHPUnit\Framework\TestCase;
+
+class IsJsonTest extends TestCase
 {
     /**
      * @dataProvider evaluateDataprovider
-     *
-     * @param mixed $expected
-     * @param mixed $jsonOther
-     *
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testEvaluate($expected, $jsonOther): void
+    public function testEvaluate($expected, $jsonOther)
     {
         $constraint = new IsJson;
 

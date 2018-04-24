@@ -134,7 +134,7 @@ class ActiveQuery extends Query implements ActiveQueryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function prepare($builder)
     {
@@ -196,7 +196,7 @@ class ActiveQuery extends Query implements ActiveQueryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function populate($rows)
     {
@@ -222,7 +222,7 @@ class ActiveQuery extends Query implements ActiveQueryInterface
             }
         }
 
-        return parent::populate($models);
+        return $models;
     }
 
     /**
@@ -319,14 +319,11 @@ class ActiveQuery extends Query implements ActiveQueryInterface
             $params = $this->params;
         }
 
-        $command = $db->createCommand($sql, $params);
-        $this->setCommandCache($command);
-
-        return $command;
+        return $db->createCommand($sql, $params);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function queryScalar($selectExpression, $db)
     {
@@ -340,13 +337,11 @@ class ActiveQuery extends Query implements ActiveQueryInterface
             return parent::queryScalar($selectExpression, $db);
         }
 
-        $command = (new Query())->select([$selectExpression])
+        return (new Query())->select([$selectExpression])
             ->from(['c' => "({$this->sql})"])
             ->params($this->params)
-            ->createCommand($db);
-        $this->setCommandCache($command);
-
-        return $command->queryScalar();
+            ->createCommand($db)
+            ->queryScalar();
     }
 
     /**
@@ -762,7 +757,7 @@ class ActiveQuery extends Query implements ActiveQueryInterface
      */
     public function viaTable($tableName, $link, callable $callable = null)
     {
-        $modelClass = $this->primaryModel !== null ? get_class($this->primaryModel) : __CLASS__;
+        $modelClass = $this->primaryModel !== null ? get_class($this->primaryModel) : get_class();
 
         $relation = new self($modelClass, [
             'from' => [$tableName],
@@ -808,13 +803,13 @@ class ActiveQuery extends Query implements ActiveQueryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @since 2.0.12
      */
     public function getTablesUsedInFrom()
     {
         if (empty($this->from)) {
-            return $this->cleanUpTableNames([$this->getPrimaryTableName()]);
+            $this->from = [$this->getPrimaryTableName()];
         }
 
         return parent::getTablesUsedInFrom();

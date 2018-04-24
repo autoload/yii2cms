@@ -17,13 +17,8 @@ class XmlTest extends TestCase
 {
     /**
      * @dataProvider charProvider
-     *
-     * @param mixed $char
-     *
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testPrepareString($char): void
+    public function testPrepareString($char)
     {
         $e = null;
 
@@ -53,7 +48,7 @@ class XmlTest extends TestCase
         return $data;
     }
 
-    public function testLoadEmptyString(): void
+    public function testLoadEmptyString()
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Could not load XML from empty string');
@@ -61,7 +56,7 @@ class XmlTest extends TestCase
         Xml::load('');
     }
 
-    public function testLoadArray(): void
+    public function testLoadArray()
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Could not load XML from array');
@@ -69,7 +64,7 @@ class XmlTest extends TestCase
         Xml::load([1, 2, 3]);
     }
 
-    public function testLoadBoolean(): void
+    public function testLoadBoolean()
     {
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Could not load XML from boolean');
@@ -77,7 +72,7 @@ class XmlTest extends TestCase
         Xml::load(false);
     }
 
-    public function testNestedXmlToVariable(): void
+    public function testNestedXmlToVariable()
     {
         $xml = '<array><element key="a"><array><element key="b"><string>foo</string></element></array></element><element key="c"><string>bar</string></element></array>';
         $dom = new \DOMDocument;
@@ -95,7 +90,7 @@ class XmlTest extends TestCase
         $this->assertSame($expected, $actual);
     }
 
-    public function testXmlToVariableCanHandleMultipleOfTheSameArgumentType(): void
+    public function testXmlToVariableCanHandleMultipleOfTheSameArgumentType()
     {
         $xml = '<object class="SampleClass"><arguments><string>a</string><string>b</string><string>c</string></arguments></object>';
         $dom = new \DOMDocument();
@@ -108,7 +103,7 @@ class XmlTest extends TestCase
         $this->assertSame($expected, (array) $actual);
     }
 
-    public function testXmlToVariableCanConstructObjectsWithConstructorArgumentsRecursively(): void
+    public function testXmlToVariableCanConstructObjectsWithConstructorArgumentsRecursively()
     {
         $xml = '<object class="Exception"><arguments><string>one</string><integer>0</integer><object class="Exception"><arguments><string>two</string></arguments></object></arguments></object>';
         $dom = new \DOMDocument();

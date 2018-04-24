@@ -10,7 +10,6 @@ namespace yii\validators;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\Html;
-use yii\helpers\IpHelper;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
@@ -40,6 +39,14 @@ use yii\web\JsExpression;
  */
 class IpValidator extends Validator
 {
+    /**
+     * The length of IPv6 address in bits.
+     */
+    const IPV6_ADDRESS_LENGTH = 128;
+    /**
+     * The length of IPv4 address in bits.
+     */
+    const IPV4_ADDRESS_LENGTH = 32;
     /**
      * Negation char.
      *
@@ -205,7 +212,7 @@ class IpValidator extends Validator
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function init()
     {
@@ -283,7 +290,7 @@ class IpValidator extends Validator
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function validateValue($value)
     {
@@ -297,7 +304,7 @@ class IpValidator extends Validator
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function validateAttribute($model, $attribute)
     {
@@ -347,14 +354,14 @@ class IpValidator extends Validator
             return [$this->message, []];
         }
 
-        if ($this->getIpVersion($ip) === IpHelper::IPV6) {
+        if ($this->getIpVersion($ip) == 6) {
             if ($cidr !== null) {
-                if ($cidr > IpHelper::IPV6_ADDRESS_LENGTH || $cidr < 0) {
+                if ($cidr > static::IPV6_ADDRESS_LENGTH || $cidr < 0) {
                     return [$this->wrongCidr, []];
                 }
             } else {
                 $isCidrDefault = true;
-                $cidr = IpHelper::IPV6_ADDRESS_LENGTH;
+                $cidr = static::IPV6_ADDRESS_LENGTH;
             }
 
             if (!$this->validateIPv6($ip)) {
@@ -369,12 +376,12 @@ class IpValidator extends Validator
             }
         } else {
             if ($cidr !== null) {
-                if ($cidr > IpHelper::IPV4_ADDRESS_LENGTH || $cidr < 0) {
+                if ($cidr > static::IPV4_ADDRESS_LENGTH || $cidr < 0) {
                     return [$this->wrongCidr, []];
                 }
             } else {
                 $isCidrDefault = true;
-                $cidr = IpHelper::IPV4_ADDRESS_LENGTH;
+                $cidr = static::IPV4_ADDRESS_LENGTH;
             }
             if (!$this->validateIPv4($ip)) {
                 return [$this->message, []];
@@ -407,7 +414,8 @@ class IpValidator extends Validator
      */
     private function expandIPv6($ip)
     {
-        return IpHelper::expandIPv6($ip);
+        $hex = unpack('H*hex', inet_pton($ip));
+        return substr(preg_replace('/([a-f0-9]{4})/i', '$1:', $hex['hex']), 0, -1);
     }
 
     /**
@@ -507,7 +515,7 @@ class IpValidator extends Validator
      */
     private function getIpVersion($ip)
     {
-        return IpHelper::getIpVersion($ip);
+        return strpos($ip, ':') === false ? 4 : 6;
     }
 
     /**
@@ -529,11 +537,51 @@ class IpValidator extends Validator
      */
     private function inRange($ip, $cidr, $range)
     {
-        return IpHelper::inRange($ip . '/' . $cidr, $range);
+        $ipVersion = $this->getIpVersion($ip);
+        $binIp = $this->ip2bin($ip);
+
+        $parts = explode('/', $range);
+        $net = array_shift($parts);
+        $range_cidr = array_shift($parts);
+
+
+        $netVersion = $this->getIpVersion($net);
+        if ($ipVersion !== $netVersion) {
+            return false;
+        }
+        if ($range_cidr === null) {
+            $range_cidr = $netVersion === 4 ? static::IPV4_ADDRESS_LENGTH : static::IPV6_ADDRESS_LENGTH;
+        }
+
+        $binNet = $this->ip2bin($net);
+        return substr($binIp, 0, $range_cidr) === substr($binNet, 0, $range_cidr) && $cidr >= $range_cidr;
     }
 
     /**
-     * {@inheritdoc}
+     * Converts IP address to bits representation.
+     *
+     * @param string $ip
+     * @return string bits as a string
+     */
+    private function ip2bin($ip)
+    {
+        if ($this->getIpVersion($ip) === 4) {
+            return str_pad(base_convert(ip2long($ip), 10, 2), static::IPV4_ADDRESS_LENGTH, '0', STR_PAD_LEFT);
+        }
+
+        $unpack = unpack('A16', inet_pton($ip));
+        $binStr = array_shift($unpack);
+        $bytes = static::IPV6_ADDRESS_LENGTH / 8; // 128 bit / 8 = 16 bytes
+        $result = '';
+        while ($bytes-- > 0) {
+            $result = sprintf('%08b', isset($binStr[$bytes]) ? ord($binStr[$bytes]) : '0') . $result;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @inheritdoc
      */
     public function clientValidateAttribute($model, $attribute, $view)
     {
@@ -544,7 +592,7 @@ class IpValidator extends Validator
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getClientOptions($model, $attribute)
     {

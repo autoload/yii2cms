@@ -93,7 +93,7 @@ class Cors extends ActionFilter
 
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function beforeAction($action)
     {
@@ -105,12 +105,6 @@ class Cors extends ActionFilter
         $requestCorsHeaders = $this->extractHeaders();
         $responseCorsHeaders = $this->prepareHeaders($requestCorsHeaders);
         $this->addCorsHeaders($this->response, $responseCorsHeaders);
-
-        if ($this->request->isOptions && $this->request->headers->has('Access-Control-Request-Method')) {
-            // it is CORS preflight request, respond with 200 OK without further processing
-            $this->response->setStatusCode(200);
-            return false;
-        }
 
         return true;
     }
@@ -139,7 +133,8 @@ class Cors extends ActionFilter
     public function extractHeaders()
     {
         $headers = [];
-        foreach (array_keys($this->cors) as $headerField) {
+        $requestHeaders = array_keys($this->cors);
+        foreach ($requestHeaders as $headerField) {
             $serverField = $this->headerizeToPhp($headerField);
             $headerData = isset($_SERVER[$serverField]) ? $_SERVER[$serverField] : null;
             if ($headerData !== null) {

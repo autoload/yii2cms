@@ -247,7 +247,8 @@ class YiiRequirementChecker
             return (int) $verboseSize;
         }
         $sizeUnit = trim($verboseSize, '0123456789');
-        $size = trim(str_replace($sizeUnit, '', $verboseSize));
+        $size = str_replace($sizeUnit, '', $verboseSize);
+        $size = trim($size);
         if (!is_numeric($size)) {
             return 0;
         }

@@ -48,8 +48,6 @@ use yii\helpers\Console;
  */
 class Table extends Widget
 {
-    const DEFAULT_CONSOLE_SCREEN_WIDTH = 120;
-    const CONSOLE_SCROLLBAR_OFFSET = 3;
     const CHAR_TOP = 'top';
     const CHAR_TOP_MID = 'top-mid';
     const CHAR_TOP_LEFT = 'top-left';
@@ -116,7 +114,7 @@ class Table extends Widget
      */
     public function setHeaders(array $headers)
     {
-        $this->_headers = array_values($headers);
+        $this->_headers = $headers;
         return $this;
     }
 
@@ -128,7 +126,7 @@ class Table extends Widget
      */
     public function setRows(array $rows)
     {
-        $this->_rows = array_map('array_values', $rows);
+        $this->_rows = $rows;
         return $this;
     }
 
@@ -227,7 +225,6 @@ class Table extends Widget
 
         $buffer = '';
         $arrayPointer = [];
-        $finalChunk = [];
         for ($i = 0, ($max = $this->calculateRowHeight($row)) ?: $max = 1; $i < $max; $i++) {
             $buffer .= $spanLeft . ' ';
             foreach ($size as $index => $cellSize) {
@@ -301,7 +298,7 @@ class Table extends Widget
     {
         $this->_columnWidths = $columns = [];
         $totalWidth = 0;
-        $screenWidth = $this->getScreenWidth() - self::CONSOLE_SCROLLBAR_OFFSET;
+        $screenWidth = $this->getScreenWidth() - 3;
 
         for ($i = 0, $count = count($this->_headers); $i < $count; $i++) {
             $columns[] = ArrayHelper::getColumn($this->_rows, $i);
@@ -369,7 +366,6 @@ class Table extends Widget
 
     /**
      * Getting screen width.
-     * If it is not able to determine screen width, default value `123` will be set.
      *
      * @return int screen width
      */
@@ -377,10 +373,11 @@ class Table extends Widget
     {
         if (!$this->_screenWidth) {
             $size = Console::getScreenSize();
-            $this->_screenWidth = isset($size[0])
-                ? $size[0]
-                : self::DEFAULT_CONSOLE_SCREEN_WIDTH + self::CONSOLE_SCROLLBAR_OFFSET;
+            if (isset($size[0])) {
+                $this->_screenWidth = $size[0];
+            }
         }
+
         return $this->_screenWidth;
     }
 }

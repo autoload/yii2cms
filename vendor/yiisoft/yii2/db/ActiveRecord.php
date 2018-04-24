@@ -190,21 +190,17 @@ class ActiveRecord extends BaseActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function refresh()
     {
-        $query = static::find();
-        $tableName = key($query->getTablesUsedInFrom());
         $pk = [];
         // disambiguate column names in case ActiveQuery adds a JOIN
         foreach ($this->getPrimaryKey(true) as $key => $value) {
-            $pk[$tableName . '.' . $key] = $value;
+            $pk[static::tableName() . '.' . $key] = $value;
         }
-        $query->where($pk);
-
         /* @var $record BaseActiveRecord */
-        $record = $query->one();
+        $record = static::findOne($pk);
         return $this->refreshInternal($record);
     }
 
@@ -317,7 +313,7 @@ class ActiveRecord extends BaseActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      * @return ActiveQuery the newly created [[ActiveQuery]] instance.
      */
     public static function find()
@@ -417,7 +413,7 @@ class ActiveRecord extends BaseActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public static function populateRecord($record, $row)
     {
